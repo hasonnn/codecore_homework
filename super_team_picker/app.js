@@ -22,3 +22,4 @@ const DOMAIN = 'localhost'
 app.listen(PORT, DOMAIN, () => {
     console.log(`Server is listening at http://${DOMAIN}:${PORT}.`)
 });
+
