@@ -2,6 +2,7 @@ const express = require("express");
 const logger = require("morgan");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const methodOverride = require("method-override");
 
 const app = express();
 
@@ -13,9 +14,19 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended:false}));
 app.use(cookieParser);
 
+app.use(
+    methodOverride((req, res) => {
+        if (req.body && req.body._method) {
+            const method = req.body._method;
+            return method;
+        }
+    })
+);
 
-
-
+const homeRouter = require("./routes/home");
+app.use("/", homeRouter);
+const cohortsRouter = require("./routes/cohorts");
+app.use("/cohorts", cohortsRouter);
 
 const PORT = '3636'
 const DOMAIN = 'localhost'
