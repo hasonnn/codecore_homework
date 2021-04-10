@@ -1,7 +1,7 @@
 <%- include('../partials/header.ejs') %>
 
-<h1>Edit Cohort</h1>
 <form class="new-form" action='/cohorts/<%= cohort.id %>' method="POST">
+    <h1>Edit Cohort</h1>
     <input type='hidden' name='_method' value='PATCH' />
     <div class="mb-3">
         <label for="logoURL" class="form-label">Logo URL</label>
@@ -19,7 +19,7 @@
         <input class="btn btn-primary" type="submit" value="Submit">
     </div>
 </form>
-</form>
+
 
 <%- include('../partials/footer.ejs') %>
 

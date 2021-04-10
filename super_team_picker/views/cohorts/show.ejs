@@ -1,24 +1,20 @@
 <%- include('../partials/header.ejs') %>
 
-<div class="mb-3">
+<div class="card-body-index">
     <% if (cohort.logoURL) {%>
-    <img src="<%= cohort.logoURL %>" class="img-thumbnail" alt="Cohort Logo">
+        <img src="<%= cohort.logoURL %>" class="show-logo" alt="Cohort Logo">
     <% } %>  
     <div class='card-body'>
         <h5 class="card-title"><%= cohort.name %></h5>
         <p class="card-text"><%= cohort.members %></p>
-    </div>
-    <a class="btn btn-outline-primary" href="./cohorts/<%= cohort.id %>/edit" role="button">Edit</a>
-    
-    <form class="new-form" action='/cohorts/<%= cohort.id %>' method="POST">
+        <a class="btn btn-outline-primary show-edit-button" href="./cohorts/<%= cohort.id %>/edit" role="button">Edit</a>
+        <br> <br>
+        <form class="delete-form show-button" action='/cohorts/<%= cohort.id %>' method="POST">
         <input type='hidden' name='_method' value='DELETE' />
         <input type='submit' class='btn btn-outline-danger' value='DELETE' />
-    </form>
+        </form>
+    </div>
 </div>
 
 <%- include('../partials/footer.ejs') %>
-
-
-
-  
 

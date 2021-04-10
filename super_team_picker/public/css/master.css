@@ -1,9 +1,4 @@
-.new-form {
-    padding-top: 50px;
-    padding-left: 75px;
-    padding-right: 75px;
-
-}
+/* HOME PAGE */
 
 .welcome-header {
     display: flex;
@@ -12,6 +7,26 @@
     padding-top: 20%;
 }
 
-.rounded-circle {
-    border-radius: .3rem;;
+/* INDEX.ejs */
+
+.card-body-index {
+    padding-top: 50px;
+    padding-left: 75px;
+    padding-right: 75px;
+}
+
+/* NEW.ejs */
+
+.new-form {
+    padding-top: 50px;
+    padding-left: 75px;
+    padding-right: 75px;
+
+}
+
+/* SHOW.ejs */
+
+.show-logo {
+    width: 150px;
+    height: 150px;
 }

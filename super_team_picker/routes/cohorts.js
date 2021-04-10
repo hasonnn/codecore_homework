@@ -8,6 +8,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
     knex
         .select("*")
+        .orderBy('id',"desc")
         .from("cohorts")
         .then(cohorts => {
             res.render("cohorts/index", {
