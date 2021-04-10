@@ -6,13 +6,15 @@ const methodOverride = require("method-override");
 
 const app = express();
 
+app.set("view engine", "ejs");
+app.set("views", "views")
+app.use(logger("dev"));
+
 const pathToStaticAssets = path.join(__dirname, "public");
 app.use(express.static(pathToStaticAssets));
+app.use(express.urlencoded({ extended:true}));
 
-app.set("view engine", "ejs");
-app.use(logger("dev"));
-app.use(express.urlencoded({ extended:false}));
-app.use(cookieParser);
+// app.use(cookieParser);
 
 app.use(
     methodOverride((req, res) => {
@@ -28,7 +30,7 @@ app.use("/", homeRouter);
 const cohortsRouter = require("./routes/cohorts");
 app.use("/cohorts", cohortsRouter);
 
-const PORT = '3636'
+const PORT = '3000'
 const DOMAIN = 'localhost'
 app.listen(PORT, DOMAIN, () => {
     console.log(`Server is listening at http://${DOMAIN}:${PORT}.`)
