@@ -4,7 +4,7 @@ const knex = require("../db/client");
 const router = express.Router();
 
 
-//index page
+//cohorts page
 router.get("/", (req, res) => {
     knex
         .select("*")
@@ -80,7 +80,7 @@ router.patch("/:id", (req, res) => {
 });
 
 //delete button
-router.delete("id", (req, res) => {
+router.delete("/:id", (req, res) => {
     knex("cohorts")
         .where("id", req.params.id)
         .del()
@@ -89,6 +89,5 @@ router.delete("id", (req, res) => {
         });
 });
 
-  
-
 module.exports = router;
+

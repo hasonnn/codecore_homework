@@ -1,13 +1,14 @@
 const express = require("express");
 const logger = require("morgan");
 const path = require("path");
-const cookieParser = require("cookie-parser");
+//const cookieParser = require("cookie-parser");
 const methodOverride = require("method-override");
 
 const app = express();
 
 app.set("view engine", "ejs");
 app.set("views", "views")
+
 app.use(logger("dev"));
 
 const pathToStaticAssets = path.join(__dirname, "public");
