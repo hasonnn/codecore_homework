@@ -26,7 +26,14 @@
 
 /* SHOW.ejs */
 
+.card-body-show {
+    padding-top: 50px;
+    padding-left: 75px;
+    padding-right: 75px;
+}
+
 .show-logo {
     width: 150px;
     height: 150px;
 }
+

@@ -1,20 +1,53 @@
 <%- include('../partials/header.ejs') %>
 
-<div class="card-body-index">
-    <% if (cohort.logoURL) {%>
+<form>
+    <div class="card-body-show">
+        <% if (cohort.logoURL) {%>
         <img src="<%= cohort.logoURL %>" class="show-logo" alt="Cohort Logo">
-    <% } %>  
-    <div class='card-body'>
-        <h5 class="card-title"><%= cohort.name %></h5>
-        <p class="card-text"><%= cohort.members %></p>
-        <a class="btn btn-outline-primary show-edit-button" href="./cohorts/<%= cohort.id %>/edit" role="button">Edit</a>
-        <br> <br>
-        <form class="delete-form show-button" action='/cohorts/<%= cohort.id %>' method="POST">
-        <input type='hidden' name='_method' value='DELETE' />
-        <input type='submit' class='btn btn-outline-danger' value='DELETE' />
-        </form>
+        <% } %>
+        <div class='card-body'>
+            <h4 class="card-title"><%= cohort.name %></h4>
+            <p class="card-text"><%= cohort.members %></p>
+        </div>
+        <div class='card-body'>
+            <p class="card-text">Method</p>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="teamCount" id="teamCount">
+                <label class="form-check-label" for="teamCount">
+                    Team Count
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="numberPerTeam" id="numberPerTeam">
+                <label class="form-check-label" for="numberPerTeam">
+                    Number Per Team
+                </label>
+            </div>
+        </div>
+        <div class='card-body'>
+            <p class="card-text">Quantity</p>
+            <input class="form-control" type="text" placeholder="e.g. 2" aria-label="quantityNumber">
+        </div>
+        <div class="d-grid gap-2 card-body">
+            <button class="btn btn-outline-primary" type="button">Assign Teams</button>
+        </div>
+        <div class='card-body'>
+            <table class="table-team">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Members</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                    </tr>
+                </tbody>
+            </table> <br> <br>
+        </div>
     </div>
-</div>
+</form>
 
 <%- include('../partials/footer.ejs') %>
-

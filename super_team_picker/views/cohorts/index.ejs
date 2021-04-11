@@ -1,18 +1,21 @@
 <%- include("../partials/header") %>
 
 <div class="card w-100">
-    <% for (let cohort of cohorts) { %>
-    <div class="card-body-index">
-      <% if (cohort.logoURL) {%>
-      <img src="<%= cohort.logoURL %>" class="rounded-circle" width="50" height="50" alt="cohort logo">
-      <% } %>  
-      <h5 class="card-title"><%= cohort.name %></h5>
-      <p class="card-text"><%= cohort.members %></p>
-      <a href="./cohorts/<%= cohort.id %>" class="btn btn-outline-primary">Show Cohort</a>
-    </div>
+  <% for (let cohort of cohorts) { %>
+  <div class="card-body-index">
+    <% if (cohort.logoURL) {%>
+    <img src="<%= cohort.logoURL %>" class="rounded-circle" width="50" height="50" alt="cohort logo"> <br> <br>
     <% } %>
+    <h5 class="card-title"><%= cohort.name %></h5>
+    <p class="card-text"><%= cohort.members %></p>
+    <a href="./cohorts/<%= cohort.id %>" class="btn btn-primary">Show Cohort</a> <br> <br>
+    <a class="btn btn-outline-primary" href="./cohorts/<%= cohort.id %>/edit" role="button">Edit</a> <br> <br>
+    <form class="delete-form show-button" action='/cohorts/<%= cohort.id %>' method="POST">
+      <input type='hidden' name='_method' value='DELETE' />
+      <input type='submit' class='btn btn-outline-danger' value='DELETE'/> <br> <br>
+    </form>
   </div>
+  <% } %>
+</div>
 
 <%- include("../partials/footer") %>
-
-
