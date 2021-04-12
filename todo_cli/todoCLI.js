@@ -13,16 +13,18 @@ function theMenu() {
     rl.question("(v) View • (n) New • (cX) Complete • (dX) Delete • (q) Quit \n", (answer) => {
         if (answer === "v") {
             view()
+        } else if (answer === "n") {
+            add()
         }
-        rl.close();
     })
 
 }
 
-// View
-// const list = [["[]", "Do Laundry"], ["[]", "Groceries"]]
-const list = []
+// LIST
+const list = [["[]", "Do Laundry"], ["[]", "Groceries"]]
+// const list = []
 
+// View
 function view() {
     if (list.length === 0) {
         console.log("List is empty")
@@ -32,14 +34,14 @@ function view() {
         }
     }
     theMenu();
-    return list
 }
-
-
 
 // Add
 function add() {
-
+    rl.question("What would you like to add? \n", (task) => {
+        list.push(["[]", task])
+        theMenu();  
+    })
 }
 
 // Complete ✓
