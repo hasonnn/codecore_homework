@@ -15,14 +15,17 @@ function theMenu() {
             view()
         } else if (answer === "n") {
             add()
+        } else if (answer.includes("c")) {
+            completeIndex += answer;
+            complete()
         }
     })
-
 }
 
 // LIST
 const list = [["[]", "Do Laundry"], ["[]", "Groceries"]]
 // const list = []
+let completeIndex = ""
 
 // View
 function view() {
@@ -45,8 +48,8 @@ function add() {
 }
 
 // Complete ✓
-function complete() {
-
+function complete(completeIndex) {
+    console.log(completeIndex)
 }
 
 // Delete
