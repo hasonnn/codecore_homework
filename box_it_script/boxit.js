@@ -27,8 +27,14 @@ function drawBottomBorder(num)  {
 // console.log(drawBottomBorder(4))
 
 // Bars Around
-function drawBarsAround(str)  {
-    return `┃${str}┃`
+function drawBarsAround(str, num)  {
+    if (str.length !== num) {
+        let paddingNum = num - str.length;
+        let padding = " ".repeat(paddingNum);
+        return `┃${str}${padding}┃`
+    } else {
+        return `┃${str}┃`
+    }
 }
 // console.log(drawBarsAround("Hello World"))
 
@@ -38,14 +44,19 @@ function drawBarsAround(str)  {
 // ┗━━┛
 
 function boxIt(arr) {
-    for (let i = 0; i < arr.length; i++) {
-        largestStrNum = 0;
-        if (arr[i].length > largestStrNum) {
-            largestStrNum = arr[i].length
+    largestStrNum = 0;
+    arr.forEach(element => {
+        if (element.length > largestStrNum) {
+            largestStrNum = element.length
         }
-        // return `${drawTopBorder(largestStrNum)}\n${drawBarsAround(arr[i])}\n${drawMiddleBorder(largestStrNum)}\n`
-        return largestStrNum
+    });
+    let arrLast = arr.pop()
+    let outputWithoutLast = `${drawTopBorder(largestStrNum)}\n`
+    for (let i = 0; i < arr.length; i++) {
+        outputWithoutLast += `${drawBarsAround(arr[i],largestStrNum)}\n${drawMiddleBorder(largestStrNum)}\n`
     }
+    return finalOutput = outputWithoutLast + `${drawBarsAround(arrLast, largestStrNum)}\n${drawBottomBorder(largestStrNum)}`
 }
 
 console.log(boxIt(['Jon Snow', 'Cersei Lannister', 'Lannister']))
+
