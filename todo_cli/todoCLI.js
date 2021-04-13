@@ -21,6 +21,8 @@ function theMenu() {
         } else if (answer.includes("d")) {
             deleteIndex  = answer
             deleteList();
+        } else {
+            quit()
         }
     })
 }
@@ -68,7 +70,8 @@ function deleteList() {
 
 // Quit
 function quit() {
-
+    console.log("See you soon!")
+    process.exit()
 }
 
 
