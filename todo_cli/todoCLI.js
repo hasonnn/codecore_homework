@@ -12,28 +12,32 @@ console.log("--------------------");
 function theMenu() {
     rl.question("(v) View • (n) New • (cX) Complete • (dX) Delete • (q) Quit \n", (answer) => {
         if (answer === "v") {
-            view()
+            view();
         } else if (answer === "n") {
-            add()
+            add();
         } else if (answer.includes("c")) {
             completeIndex = answer;
-            complete()
+            complete();
+        } else if (answer.includes("d")) {
+            deleteIndex  = answer
+            deleteList();
         }
     })
 }
 
 // LIST
-const list = [["[]", "Do Laundry"], ["[]", "Groceries"]]
-// const list = []
-let completeIndex = ""
+const list = [["[]", "Do Laundry"], ["[]", "Groceries"]];
+// const list = [];
+let completeIndex = "";
+let deleteIndex = "";
 
 // View
 function view() {
     if (list.length === 0) {
-        console.log("List is empty")
+        console.log("List is empty");
     } else {
         for (let i = 0; i < list.length; i++) {
-            console.log(`${i} ${list[i][0]} ${list[i][1]}`)
+            console.log(`${i} ${list[i][0]} ${list[i][1]}`);
         }
     }
     theMenu();
@@ -42,7 +46,7 @@ function view() {
 // Add
 function add() {
     rl.question("What would you like to add? \n", (task) => {
-        list.push(["[]", task])
+        list.push(["[]", task]);
         theMenu();  
     })
 }
@@ -50,14 +54,16 @@ function add() {
 // Complete ✓
 function complete() {
     let i = completeIndex[1];
-    list[i].shift()
-    list[i].unshift("[✓]")
+    list[i].shift();
+    list[i].unshift("[✓]");
     theMenu();
 }
 
 // Delete
 function deleteList() {
-
+    let i = deleteIndex[1];
+    list.splice(i, 1);
+    theMenu();
 }
 
 // Quit
