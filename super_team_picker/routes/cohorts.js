@@ -38,7 +38,7 @@ router.post("/", (req, res) => {
         });
 });
 
-// individual cohort 
+// individual cohort show
 router.get("/:id", (req, res) => {
     const id = req.params.id;
     knex("cohorts")
