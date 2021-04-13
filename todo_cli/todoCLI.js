@@ -16,7 +16,7 @@ function theMenu() {
         } else if (answer === "n") {
             add()
         } else if (answer.includes("c")) {
-            completeIndex += answer;
+            completeIndex = answer;
             complete()
         }
     })
@@ -48,8 +48,11 @@ function add() {
 }
 
 // Complete ✓
-function complete(completeIndex) {
-    console.log(completeIndex)
+function complete() {
+    let i = completeIndex[1];
+    list[i].shift()
+    list[i].unshift("[✓]")
+    theMenu();
 }
 
 // Delete
