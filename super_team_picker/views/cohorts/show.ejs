@@ -11,14 +11,15 @@
         </div>
         <div class='card-body'>
             <p class="card-text">Method</p>
+            <form action='/cohorts/<%= cohort.id %>' method="GET">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="teamCount" id="teamCount">
+                <input class="form-check-input" type="radio" name="_method" value="teamCount" id="teamCount">
                 <label class="form-check-label" for="teamCount">
                     Team Count
-                </label>
+                </label>               
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="numberPerTeam" id="numberPerTeam">
+                <input class="form-check-input" type="radio" name="_method" value="numberPerTeam" id="numberPerTeam">
                 <label class="form-check-label" for="numberPerTeam">
                     Number Per Team
                 </label>
@@ -26,36 +27,58 @@
         </div>
         <div class='card-body'>
             <p class="card-text">Quantity</p>
-            <input class="form-control" type="text" placeholder="e.g. 2" aria-label="quantityNumber">
+            <input class="form-control" type="number" placeholder="e.g. 2" id="quantity" aria-label="quantityNumber">
         </div>
         <div class="d-grid gap-2 card-body">
-            <button class="btn btn-outline-primary" type="button">Assign Teams</button>
+            <button class="btn btn-outline-primary" type="submit">Assign Teams</button>
         </div>
+        </form>
         <br><br>
-        <!-- 
 
 
+        <% const members = cohort.members; %>
+        <% const memberArr = members.split(','); %>
 
-         -->
-        <% if (false) {%>
-        <div class='card-body'>
-            <table class="table-team">
+        <% if (_method === "teamCount") { %>
+            <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col" width=60px>#</th>
+                        <th scope="col">#</th>
                         <th scope="col">Members</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                    </tr>
+                    <% let team = utils.teamCount(memberArr, quantity) %>
+                    <% let numTeams = utils.numTeams(memberArr, quantity) %>
+                    <% for (let i = 0; i < team.length; i++) { %>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= team[i] %></td>
+                        </tr>
+                    <% } %>     
                 </tbody>
-            </table> <br> <br>
-        </div>
+            </table>
+        <% } else if (_method === "numberPerTeam") { %>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Members</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% let team = utils.numberPerTeam(memberArr, quantity) %>
+                <% for (let j = 0; j < team.length; j++) { %>
+                    <tr>
+                        <td><%= j + 1 %></td>
+                        <td><%= team[j] %></td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>  
         <% } %>
     </div>
 </form>
 
 <%- include('../partials/footer.ejs') %>
+
