@@ -55,24 +55,6 @@ router.get("/:id", (req, res) => {
         });
 });
 
-// show assign team
-router.post("/:id", (req, res) => {
-    knex("cohorts")
-        .insert({
-                logoURL: req.body.logoURL,
-                name: req.body.name,
-                members: req.body.members
-            },
-            "*"
-        )
-        .then(cohorts => {
-            const [cohort] = cohorts;
-            res.redirect(`cohorts/${cohort.id}`);
-        });
-});
-
-
-
 //edit page
 router.get("/:id/edit", (req, res) => {
     knex("cohorts")
