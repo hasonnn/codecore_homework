@@ -34,9 +34,30 @@
         </div>
         </form>
         <br><br>
+
+        <% if (false) { %>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Members</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let i = 0; i < outputArr.length; i++) { %>
+                    <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%= outputArr[i] %></td>
+                    </tr>
+                <% } %>     
+            </tbody>
+        </table>
+        <% } %> 
+
     </div>
 </form>
 
 <%- include('../partials/footer.ejs') %>
+
 
 

@@ -51,16 +51,20 @@ router.get("/:id", (req, res) => {
                     let quantity = req.query.quantity;
                     const members = cohort.members;
                     const memberArr = members.split(',');
+                    let shuffleArr = memberArr.sort(function(a,b) {
+                        return 0.5 - Math.random();
+                    });
+                    let outputArr = [];
                     if (method === "teamCount") {
-                        let shuffleArr = memberArr.sort(function(a,b) {
-                            return 0.5 - Math.random();
-                        });
-                        let outputArr = [];
                         for (let i = quantity; i > 0; i--) {
-                            outputArr.push(shuffleArr.splice(0, Math.ceil(shuffleArr.length/i)))
+                            outputArr.push(shuffleArr.splice(0, Math.ceil(shuffleArr.length/i)));
                         }
-                        console.log(outputArr);
-
+                        return outputArr;
+                    } else if (method === "numberPerTeam") {
+                        while (shuffleArr.length !== 0) {
+                            outputArr.push(shuffleArr.splice(0, quantity));
+                        }
+                        return outputArr;
                     }
                 }
                 res.render("cohorts/show", {
