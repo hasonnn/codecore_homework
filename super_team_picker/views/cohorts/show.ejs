@@ -27,16 +27,21 @@
         </div>
         <div class='card-body'>
             <p class="card-text">Quantity</p>
-            <input class="form-control" type="number" placeholder="e.g. 2" id="quantity" aria-label="quantityNumber">
+            <input class="form-control" type="number" placeholder="e.g. 2" name="quantity" id="quantity" aria-label="quantityNumber">
         </div>
         <div class="d-grid gap-2 card-body">
             <button class="btn btn-outline-primary" type="submit">Assign Teams</button>
         </div>
         </form>
         <br><br>
+    </div>
+</form>
+
+<%- include('../partials/footer.ejs') %>
 
 
-        <% const members = cohort.members; %>
+
+<% const members = cohort.members; %>
         <% const memberArr = members.split(','); %>
 
         <% if (method === "teamCount") { %>
@@ -75,9 +80,4 @@
                 <% } %>
                 </tbody>
             </table>  
-        <% } %>
-    </div>
-</form>
-
-<%- include('../partials/footer.ejs') %>
-
+        <% } %> 

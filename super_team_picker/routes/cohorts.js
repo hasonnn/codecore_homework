@@ -46,6 +46,16 @@ router.get("/:id", (req, res) => {
         .first()
         .then(cohort => {
             if (cohort) {
+                if (req.query.method && req.query.quantity) {
+                    const members = cohort.members;
+                    const memberArr = members.split(',');
+                    if (method === "teamCount") {
+                        let team = [];
+                        for (let i = 0; i < memberArr.length; i++) {
+
+                        }
+                    }
+                }
                 res.render("cohorts/show", {
                     cohort: cohort
                 })
