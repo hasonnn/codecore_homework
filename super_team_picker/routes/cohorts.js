@@ -41,6 +41,7 @@ router.post("/", (req, res) => {
 // individual cohort show
 router.get("/:id", (req, res) => {
     const id = req.params.id;
+    let outputArr = [];
     knex("cohorts")
         .where("id", id)
         .first()
@@ -54,21 +55,18 @@ router.get("/:id", (req, res) => {
                     let shuffleArr = memberArr.sort(function(a,b) {
                         return 0.5 - Math.random();
                     });
-                    let outputArr = [];
                     if (method === "teamCount") {
                         for (let i = quantity; i > 0; i--) {
                             outputArr.push(shuffleArr.splice(0, Math.ceil(shuffleArr.length/i)));
                         }
-                        return outputArr;
                     } else if (method === "numberPerTeam") {
                         while (shuffleArr.length !== 0) {
                             outputArr.push(shuffleArr.splice(0, quantity));
                         }
-                        return outputArr;
                     }
                 }
                 res.render("cohorts/show", {
-                    cohort: cohort
+                    cohort: cohort, outputArr: outputArr
                 })
             } else {
                 res.redirect("/cohorts");
