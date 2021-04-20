@@ -1,0 +1,39 @@
+/* HOME PAGE */
+
+.welcome-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20%;
+}
+
+/* INDEX.ejs */
+
+.card-body-index {
+    padding-top: 50px;
+    padding-left: 75px;
+    padding-right: 75px;
+}
+
+/* NEW.ejs */
+
+.new-form {
+    padding-top: 50px;
+    padding-left: 75px;
+    padding-right: 75px;
+
+}
+
+/* SHOW.ejs */
+
+.card-body-show {
+    padding-top: 50px;
+    padding-left: 75px;
+    padding-right: 75px;
+}
+
+.show-logo {
+    width: 150px;
+    height: 150px;
+}
+
